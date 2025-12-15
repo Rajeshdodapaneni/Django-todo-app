@@ -1,0 +1,17 @@
+#Python
+__pycache__/
+*.pyc
+
+
+#Virtual Environments
+venv/   
+venv1/
+
+#Django
+db.mysql
+*env
+
+
+#IDE
+.vscode/
+.idea/

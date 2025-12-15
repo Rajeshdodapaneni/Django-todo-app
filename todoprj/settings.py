@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'todoprj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dabba1',
+        'USER':'root',
+        'PASSWORD':'root',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 
@@ -128,3 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 
 django_heroku.settings(locals())
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL= 'login'

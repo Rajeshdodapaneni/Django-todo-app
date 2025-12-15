@@ -12,7 +12,7 @@
           <div class="card rounded-3">
             <div class="card-body p-4">
   
-              <h4 class="text-center my-3 pb-3">To Do App</h4>
+              <h4 class="text-center my-3 pb-3">Welcome To My To Do App</h4>
   
               <form method="POST" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                 {% csrf_token %}
@@ -27,7 +27,7 @@
                 </div>
               </form>
               <a href="{% url 'logout' %}"><button style="background: firebrick; color: white;" type="submit" class="btn btn-primary">Logout</button></a>
-              <table class="table mb-4">
+              <table class="table mb-4" border="2" color="black", margin="20px">
                 <thead>
                   <tr>
                     <th scope="col">Todo item</th>
@@ -41,14 +41,24 @@
                     <td>{{i.todo_name}}</td>
 
                     {% if i.status == True %}
+                      <span style="color:grren">Completed</span>
                       <td>Completed</td>
                     {% else %}
+                      <span style="color:red">In progress</span>
                       <td>In progress</td>
                     {% endif %}
 
                     <td>
-                      <a href="{% url 'delete' i.todo_name %}"><button type="submit" class="btn btn-danger">Delete</button></a>
-                      <a href="{% url 'update' i.todo_name %}"><button type="submit" class="btn btn-success ms-1">Finished</button></a>
+                      <a href="{% url 'delete_task' i.id %}"><button type="submit" class="btn btn-danger">Delete</button></a>
+                      <a href="{% url 'update_task' i.id %}"><button type="submit" class="btn btn-success ms-1">Update</button></a>
+                      <a href="{% url 'finish_task' i.id %}" class="btn btn-success btn-sm">{% if i.status %}
+                        Undo
+                      {% else %}
+                        Finish
+                      {% endif %}
+                      </a>
+                      
+
                     </td>
                   </tr>
                   {% endfor %}
